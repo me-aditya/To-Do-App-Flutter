@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: TasksScreen.id,
       routes: {
         TasksScreen.id: (context) => TasksScreen(),

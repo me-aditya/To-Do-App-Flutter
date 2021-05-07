@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/widgets/add_task_screen.dart';
 import 'package:todo_list/widgets/tasks_list.dart';
-
-Container view(String text) {
-  return Container(
-    child: Row(children: <Widget>[
-      Text(text),
-      SizedBox(width: 100),
-      Checkbox(
-        value: false,
-        onChanged: (value) {
-          value = true;
-        },
-      )
-    ]),
-  );
-}
-
-List<Container> views = [];
 
 class TasksScreen extends StatelessWidget {
   static String id = 'task_screen';
@@ -30,7 +14,10 @@ class TasksScreen extends StatelessWidget {
         child: Icon(
           Icons.add,
         ),
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (context) => AddTask());
+        },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,7 +76,3 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
