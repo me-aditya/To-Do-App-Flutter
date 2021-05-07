@@ -1,4 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/widgets/tasks_list.dart';
+
+Container view(String text) {
+  return Container(
+    child: Row(children: <Widget>[
+      Text(text),
+      SizedBox(width: 100),
+      Checkbox(
+        value: false,
+        onChanged: (value) {
+          value = true;
+        },
+      )
+    ]),
+  );
+}
+
+List<Container> views = [];
 
 class TasksScreen extends StatelessWidget {
   static String id = 'task_screen';
@@ -55,6 +73,8 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 50.0),
+              child: TaskList(),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
@@ -69,3 +89,7 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
