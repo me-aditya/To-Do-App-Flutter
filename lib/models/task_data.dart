@@ -8,15 +8,18 @@ class TaskData extends ChangeNotifier {
     Task(name: "Gauri"),
   ];
 
-  UnmodifiableListView<Task> get tasks => UnmodifiableListView(_tasks) ;
+  UnmodifiableListView<Task> get tasks => UnmodifiableListView(_tasks);
 
-  int get taskCount {
-    return _tasks.length;
-  }
+  int get taskCount => _tasks.length;
 
   void addTask(String newTaskTitle) {
     final newTask = Task(name: newTaskTitle);
     _tasks.add(newTask);
+    notifyListeners();
+  }
+
+  void updateTask(Task task) {
+    task.toggleDone();
     notifyListeners();
   }
 }
