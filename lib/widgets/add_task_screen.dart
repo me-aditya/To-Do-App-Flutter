@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_list/models/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
   String newTaskTitle;
