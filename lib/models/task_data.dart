@@ -4,8 +4,8 @@ import 'package:todo_list/models/task.dart';
 
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [
-    Task(name: "Aditya"),
-    Task(name: "Gauri"),
+    Task(name: "Play Cricket"),
+    Task(name: "Read Books"),
   ];
 
   UnmodifiableListView<Task> get tasks => UnmodifiableListView(_tasks);
