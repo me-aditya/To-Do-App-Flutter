@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 class TasksScreen extends StatelessWidget {
   static String id = 'task_screen';
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,18 +19,7 @@ class TasksScreen extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (context) => AddTaskScreen(
-              (newTaskTitle) {
-                // setState(
-                //   () {
-                //     Provider.of<TaskData>(context)
-                //         .tasks
-                //         .add(Task(name: newTaskTitle));
-                //   },
-                // );
-                Navigator.pop(context);
-              },
-            ),
+            builder: (context) => AddTaskScreen(),
           );
         },
       ),
@@ -65,7 +53,7 @@ class TasksScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${Provider.of<TaskData>(context).tasks.length} Tasks',
+                  '${Provider.of<TaskData>(context).taskCount} Tasks',
                   style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.white,
