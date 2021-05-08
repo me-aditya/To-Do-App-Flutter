@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/models/task.dart';
+import 'package:todo_list/models/task_data.dart';
 import 'package:todo_list/widgets/add_task_screen.dart';
 import 'package:todo_list/widgets/tasks_list.dart';
+import 'package:provider/provider.dart';
 
 class TasksScreen extends StatefulWidget {
   static String id = 'task_screen';
@@ -11,11 +13,6 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: "Aditya"),
-    Task(name: "Gauri"),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +29,9 @@ class _TasksScreenState extends State<TasksScreen> {
               (newTaskTitle) {
                 setState(
                   () {
-                    tasks.add(Task(name: newTaskTitle));
+                    Provider.of<TaskData>(context)
+                        .tasks
+                        .add(Task(name: newTaskTitle));
                   },
                 );
                 Navigator.pop(context);
@@ -71,7 +70,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '${tasks.length} Tasks',
+                  '${Provider.of<TaskData>(context).tasks.length} Tasks',
                   style: TextStyle(
                     fontSize: 18.0,
                     color: Colors.white,
@@ -83,7 +82,7 @@ class _TasksScreenState extends State<TasksScreen> {
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 50.0),
-              child: TaskList(tasks: tasks),
+              child: TaskList(tasks: Provider.of<TaskData>(context).tasks),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
