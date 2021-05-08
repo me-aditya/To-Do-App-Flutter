@@ -8,4 +8,8 @@ List<Task> tasks = [
     Task(name: "Gauri"),
   ];
 
+  int get taskCount {
+    return tasks.length ;
+  }
+
 }
