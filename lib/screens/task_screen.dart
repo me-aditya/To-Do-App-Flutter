@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/models/task.dart';
 import 'package:todo_list/widgets/add_task_screen.dart';
 import 'package:todo_list/widgets/tasks_list.dart';
 
-class TasksScreen extends StatelessWidget {
+class TasksScreen extends StatefulWidget {
   static String id = 'task_screen';
+
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(name: "Aditya"),
+    Task(name: "Gauri"),
+  ];
 
   @override
   Widget build(BuildContext context) {
