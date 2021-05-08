@@ -27,7 +27,18 @@ class _TasksScreenState extends State<TasksScreen> {
         ),
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => AddTask());
+            context: context,
+            builder: (context) => AddTaskScreen(
+              (newTaskTitle) {
+                setState(
+                  () {
+                    tasks.add(Task(name: newTaskTitle));
+                  },
+                );
+                Navigator.pop(context);
+              },
+            ),
+          );
         },
       ),
       body: Column(
@@ -72,7 +83,7 @@ class _TasksScreenState extends State<TasksScreen> {
           Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 50.0),
-              child: TaskList(tasks :tasks),
+              child: TaskList(tasks: tasks),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
